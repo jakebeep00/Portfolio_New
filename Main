@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김재근 - Robot SW Engineer Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+
+        .contact-links a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 50px;
+        }
+
+        h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .summary {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1em;
+            opacity: 0.9;
+        }
+
+        .competencies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .competency-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            transition: transform 0.3s;
+        }
+
+        .competency-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .competency-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .competency-card ul {
+            list-style: none;
+        }
+
+        .competency-card li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .competency-card li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        .project-card {
+            background: #fff;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .project-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .award-badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+
+        .project-meta {
+            color: #6c757d;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .project-section {
+            margin-bottom: 20px;
+        }
+
+        .project-section h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .project-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-section li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .project-section li:before {
+            content: "•";
+            position: absolute;
+            left: 5px;
+            color: #667eea;
+            font-size: 1.5em;
+            line-height: 1;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tech-badge {
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .achievements {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #28a745;
+        }
+
+        .achievements li {
+            color: #333;
+        }
+
+        .work-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #667eea;
+        }
+
+        .work-card h3 {
+            color: #333;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+
+        .work-card .company {
+            color: #667eea;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .work-card ul {
+            list-style: none;
+        }
+
+        .work-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .work-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        .education-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .cert-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #28a745;
+        }
+
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .spec-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .spec-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .spec-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .spec-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .subtitle {
+                font-size: 1.2em;
+            }
+            
+            header, .content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>김재근 Jaegeun Kim</h1>
+            <p class="subtitle">🤖 Robot Software Engineer</p>
+            <div class="contact-links">
+                <a href="mailto:jaegeunkim.work@gmail.com">📧 Email</a>
+                <a href="tel:01046272791">📱 010-4627-2791</a>
+                <a href="https://github.com/jakebeep00" target="_blank">💻 GitHub</a>
+                <a href="https://www.linkedin.com/in/jaegeun-kim-068551364" target="_blank">💼 LinkedIn</a>
+            </div>
+        </header>
+
+        <div class="content">
+            <section id="summary">
+                <h2>🎯 PROFESSIONAL SUMMARY</h2>
+                <div class="summary">
+                    <strong>로봇공학 전공 기반의 SW 엔지니어</strong>로, 자율주행 및 로봇 비전 시스템 개발 경험을 보유하고 있습니다.<br>
+                    <strong>SLAM, 컴퓨터 비전, 딥러닝 객체 인식</strong> 등 로봇 SW 핵심 기술을 실전에 적용한 경험이 있으며,<br>
+                    대회 <strong>3회 수상</strong> (총장상, 우수상 2회) 및 <strong>Valeo 인턴십</strong>을 통해 실무 역량을 검증받았습니다.
+                </div>
+            </section>
+
+            <section id="achievements">
+                <h2>📊 KEY ACHIEVEMENTS</h2>
+                <div class="stats">
+                    <div class="stat-card">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">대회 수상</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">360°</span>
+                        <span class="stat-label">LiDAR 스캔 범위</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">SLAM 맵핑 정확도</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">완성 프로젝트</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="competencies">
+                <h2>💻 CORE COMPETENCIES</h2>
+                <div class="competencies">
+                    <div class="competency-card">
+                        <h3>🤖 로봇 제어 시스템</h3>
+                        <ul>
+                            <li>ROS 2 (Robot Operating System)</li>
+                            <li>SLAM (Cartographer)</li>
+                            <li>Navigation2 Stack</li>
+                            <li>센서 융합 및 처리</li>
+                        </ul>
+                    </div>
+                    <div class="competency-card">
+                        <h3>👁️ 컴퓨터 비전</h3>
+                        <ul>
+                            <li>OpenCV 이미지 처리</li>
+                            <li>객체 추적 및 인식</li>
+                            <li>실시간 영상 처리</li>
+                            <li>센서 데이터 시각화</li>
+                        </ul>
+                    </div>
+                    <div class="competency-card">
+                        <h3>🧠 딥러닝 & AI</h3>
+                        <ul>
+                            <li>PyTorch 모델 학습</li>
+                            <li>경사하강법 최적화</li>
+                            <li>데이터 정규화</li>
+                            <li>손실 함수 설계</li>
+                        </ul>
+                    </div>
+                    <div class="competency-card">
+                        <h3>⚙️ 임베디드 시스템</h3>
+                        <ul>
+                            <li>Raspberry Pi 3</li>
+                            <li>Ubuntu Linux</li>
+                            <li>실시간 제어 시스템</li>
+                            <li>센서 인터페이스</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>🚀 PROJECTS</h2>
+
+                <!-- Main Project: SLAM Autonomous Driving -->
+                <div class="project-card" style="border-left: 6px solid #667eea;">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title" style="font-size: 1.7em;">🤖 LiDAR 기반 SLAM 자율주행 시스템 구축</h3>
+                            <p style="color: #667eea; font-weight: 600; margin-top: 5px;">TurtleBot3 + ROS 2 Humble + Cartographer + Navigation2</p>
+                        </div>
+                        <span class="award-badge">🏆 우수상</span>
+                    </div>
+                    <p class="project-meta" style="font-size: 1.05em;"><strong>2024.04 - 2024.05 | 제3회 국제대학생 EV 자율주행 경진대회</strong></p>
+
+                    <!-- 이미지 섹션 - 대회 현장 및 로봇 사진 -->
+                    <div class="project-section">
+                        <h4 style="font-size: 1.25em;">📸 대회 현장 및 로봇 플랫폼</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                            <div style="text-align: center;">
+                                <!-- 이곳에 대회 현장 사진 넣기 -->
+                                <div style="width: 100%; height: 250px; background: #f8f9fa; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 2px dashed #667eea;">
+                                    <p style="color: #667eea; font-weight: 600;">대회 미로 코스 현장 사진<br>(이미지 업로드 필요)</p>
+                                </div>
+                                <p style="margin-top: 10px; color: #6c757d; font-size: 0.95em;">실내 미로형 코스</p>
+                            </div>
+                            <div style="text-align: center;">
+                                <!-- 이곳에 SLAM 맵핑 결과 사진 넣기 -->
+                                <div style="width: 100%; height: 250px; background: #f8f9fa; border-radius: 10px; display: flex; align-items: center; justify-content: center; border: 2px dashed #667eea;">
+                                    <p style="color: #667eea; font-weight: 600;">SLAM 맵핑 결과<br>(이미지 업로드 필요)</p>
+                                </div>
+                                <p style="margin-top: 10px; color: #6c757d; font-size: 0.95em;">Cartographer 맵 생성 결과</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Competition Context -->
+                    <div style="background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); padding: 20px; border-radius: 10px; margin-bottom: 25px; border-left: 4px solid #667eea;">
+                        <h4 style="color: #667eea; margin-bottom: 12px; font-size: 1.2em;">🎯 대회 미션 및 환경</h4>
+                        <p style="line-height: 1.8; margin-bottom: 10px;">
+                            <strong>미션:</strong> 미로형 실내 코스에서 <strong>사전 지도 없이</strong> 로봇이 환경을 인식·지도화한 후, 생성된 맵을 기반으로 목표 지점까지 <strong>완전 자율주행</strong>
+                        </p>
+                        <p style="line-height: 1.8;">
+                            <strong>환경 특성:</strong> 반복 구조의 미로 / 동적·정적 장애물 혼재 / 좁은 통로 (최소 60cm) / 급회전 구간 다수
+                        </p>
+                    </div>
+
+                    <!-- My Role Highlight -->
+                    <div style="background: #fff3cd; padding: 20px; border-radius: 10px; margin-bottom: 25px; border-left: 4px solid #ffc107;">
+                        <h4 style="color: #856404; margin-bottom: 12px; font-size: 1.2em;">👨‍💻 본인 담당: SLAM 파트 리더 (인지 시스템 핵심)</h4>
+                        <p style="line-height: 1.8; color: #856404;">
+                            자율주행의 <strong>인지(Perception)</strong> 단계 전담으로, LiDAR 센서 데이터를 기반으로 실시간 <strong>위치 추정(Localization)</strong>과 <strong>지도 생성(Mapping)</strong>을 수행하며, SLAM 품질이 전체 주행 성능을 결정하는 핵심 역할 수행
+                        </p>
+                    </div>
+
+                    <!-- Hardware Specifications -->
+                    <div class="project-section">
+                        <h4 style="font-size: 1.25em;">🔧 하드웨어 플랫폼: TurtleBot3 Burger</h4>
+                        <table class="spec-table">
+                            <thead>
+                                <tr>
+                                    <th>구성 요소</th>
+                                    <th>사양</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>LiDAR 센서</strong></td>
+                                    <td>360° Laser Distance Sensor LDS-01 (0.12m ~ 3.5m 탐지 범위, 1.8kHz 샘플링)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>컴퓨팅</strong></td>
+                                    <td>Raspberry Pi 3 Model B (Quad-core 1.2GHz, 1GB RAM)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>구동부</strong></td>
+                                    <td>Dynamixel XL430-W250-T 모터 (2-wheel differential drive)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>센서</strong></td>
+                                    <td>9축 IMU (Gyroscope, Accelerometer, Magnetometer)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>전원</strong></td>
+                                    <td>Li-Po 1,800mAh 배터리 (약 2.5시간 구동)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- System Architecture -->
+                    <div class="project-section">
+                        <h4 style="font-size: 1.25em;">🏗️ 자율주행 시스템 아키텍처 (End-to-End)</h4>
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 10px; font-family: monospace; margin-bottom: 15px;">
+                            <pre style="margin: 0; line-height: 2; color: #495057; font-size: 0.95em;">
+<strong style="color: #667eea;">[1. LiDAR Sensor (LDS-01)]</strong>
+   ├─ 360° Laser Scan
+   ├─ 1.8kHz Sampling Rate
+   └─ Topic: /scan (sensor_msgs/LaserScan)
+          ↓
+<strong style="color: #667eea; background: #fff3cd; padding: 2px 8px;">[2. SLAM / Localization]</strong> ← <strong style="color: #dc3545;">★ 본인 담당 핵심 ★</strong>
+   ├─ <strong>Cartographer (Google)</strong>
+   │   ├─ Scan Matching (Local SLAM)
+   │   ├─ Submap Generation
+   │   ├─ Pose Graph Optimization
+   │   └─ Loop Closure Detection
+   ├─ Output: Occupancy Grid Map (/map)
+   ├─ Output: Robot Pose (TF: map → odom → base_link)
+   └─ Config: turtlebot3_lds_2d.lua
+          ↓
+<strong style="color: #495057;">[3. Global Planning (Navigation2)]</strong>
+   ├─ NavFn Planner (Dijkstra Algorithm)
+   ├─ Input: /map + Goal Pose
+   └─ Output: Global Path
+          ↓
+<strong style="color: #495057;">[4. Local Planning]</strong>
+   ├─ DWB (Dynamic Window Approach)
+   ├─ Real-time Obstacle Avoidance
+   ├─ Cost Function Optimization
+   └─ Output: Velocity Commands
+          ↓
+<strong style="color: #495057;">[5. Motion Control]</strong>
+   ├─ /cmd_vel Topic
+   ├─ Linear & Angular Velocity
+   └─ Dynamixel Motor Control
+          ↓
+<strong style="color: #28a745;">[6. ✓ 목표 지점 자율 도착]</strong>
+                            </pre>
+                        </div>
+                        <p style="line-height: 1.8; color: #6c757d; font-style: italic; background: #fff3cd; padding: 12px; border-radius: 8px;">
+                            💡 <strong>핵심 인사이트:</strong> "SLAM 품질이 전체 자율주행 성능을 결정한다" – 맵 품질 저하 시 Planning 실패 → 제어 불안정 연쇄 발생
+                        </p>
+                    </div>
+
+                    <!-- SLAM Technical Details -->
+                    <div class="project-section">
+                        <h4 style="font-size: 1.25em;">🔬 Cartographer SLAM 상세 구현</h4>
+                        <div style="background: #e7f3ff; padding: 20px; border-radius: 10px; margin-bottom: 15px;">
+                            <p style="margin-bottom: 12px; line-height: 1.8;"><strong style="color: #667eea;">📌 선택 이유:</strong></p>
+                            <ul style="list-style: none; padding-left: 20px;">
+                                <li style="padding: 5px 0;">✓ LiDAR 기반 2D SLAM에 최적화된 알고리즘</li>
+                                <li style="padding: 5px 0;">✓ Pose Graph 기반으로 누적 오차 보정 (Loop Closure)</li>
+                                <li style="padding: 5px 0;">✓ TurtleBot3 + ROS 2 공식 지원 및 레퍼런스 풍부</li>
+                                <li style="padding: 5px 0;">✓ 실시간 성능과 정확도 균형 우수</li>
+                            </ul>
+                        </div>
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                            <p style="margin-bottom: 12px; line-height: 1.8;"><strong style="color: #667eea;">⚙️ 핵심 파라미터 튜닝 (turtlebot3_lds_2d.lua):</strong></p>
+                            <table class="spec-table">
+                                <thead>
+                                    <tr>
+                                        <th>파라미터</th>
+                                        <th>설정값</th>
+                                        <th>목적</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>min_range</code></td>
+                                        <td>0.12m</td>
+                                        <td>LiDAR 최소 감지 거리</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>max_range</code></td>
+                                        <td>3.5m</td>
+                                        <td>LiDAR 최대 감지 거리</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>odometry_sampling_ratio</code></td>
+                                        <td>0.5 (튜닝)</td>
+                                        <td>오도메트리 샘플링 비율 감소로 드리프트 방지</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>use_online_correlative_scan_matching</code></td>
+                                        <td>true</td>
+                                        <td>실시간 스캔 매칭 활성화</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>optimize_every_n_nodes</code></td>
+                                        <td>90</td>
+                                        <td>Pose Graph 최적화 주기</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Core Responsibilities -->
+                    <div class="project-section">
+                        <h4 style="font-size: 1.25em;">💼 핵심 수행 업무</h4>
+                        <ul>
+                            <li><strong>ROS 2 시스템 구축:</strong> TurtleBot3 Bringup, Cartographer, Navigation2 노드 연동 및 launch 파일 작성</li>
+                            <li><strong>LiDAR 기반 실시간 환경 인식:</strong> 2D LaserScan 데이터를 Cartographer에 입력하여 1.8kHz 주기로 Scan Matching 수행</li>
+                            <li><strong>전략적 Teleop 기반 맵핑:</strong> 무작위 주행이 아닌 환경 구조(벽면, 코너, 반복 구간)를 분석하여 최적 주행 동선 설계 → SLAM 품질 극대화</li>
+                            <li><strong>파라미터 튜닝 및 문제 해결:</strong>
+                                <ul style="margin-top: 8px; padding-left: 25px;">
+                                    <li>회전 시 맵 왜곡 문제 → <code>odometry_sampling_ratio</code> 조정</li>
+                                    <li>반복 구조로 인한 위치 드리프트 → Loop Closure 유도 전략 수립</li>
+                                    <li>좁은 통로에서의 스캔 누락 → <code>max_range</code> 최적화</li>
+                                </ul>
+                            </li>
+                            <li><strong>Localization 안정성 검증:</strong> 생성된 맵 기반 실시간 위치 추정의 정확도를 RViz로 모니터링하며 TF 트리 정합성 확보</li>
+                            <li><strong>Navigation2 연동 테스트:</strong> SLAM 결과가 Global/Local Planning에 미치는 영향을 분석하며 전체 파이프라인 안정성 검증</li>
+                        </ul>
+                    </div>
+
+                    <!-- Technical Issues & Solutions -->
+                    <div class="project-section">
+                        <h4 style="font-size: 1.25em;">⚠️ 기술적 문제 및 해결 과정</h4>
+                        <div style="background: #fff3cd; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #ffc107;">
+                            <p style="margin-bottom: 10px;"><strong style="color: #856404;">문제 1: 맵 왜곡 (Wall Bending)</strong></p>
+                            <p style="margin-bottom: 8px; line-height: 1.7;">• <strong>증상:</strong> 급회전 구간에서 벽면이 휘어져 보이는 현상 발생</p>
+                            <p style="margin-bottom: 8px; line-height: 1.7;">• <strong>원인:</strong> 높은 각속도로 회전 시 LiDAR 스캔의 시간차로 인한 누적 오차</p>
+                            <p style="margin-bottom: 8px; line-height: 1.7;">• <strong>해결:</strong> 
+                                <br>&nbsp;&nbsp;&nbsp;① 회전 구간 진입 시 선속도 0.05m/s, 각속도 0.3rad/s로 제한
+                                <br>&nbsp;&nbsp;&nbsp;② Cartographer의 <code>odometry_sampling_ratio</code> 0.5로 감소 → 오도메트리 의존도 낮춤
+                                <br>&nbsp;&nbsp;&nbsp;③ 동일 구간 2회 이상 주행으로 Loop Closure 유도
+                            </p>
+                            <p style="line-height: 1.7;"><strong>✓ 결과:</strong> 벽면 직선성 75% → 95% 향상, RViz 시각화 상 왜곡 거의 제거</p>
+                        </div>
+                        <div style="background: #d1ecf1; padding: 20px; border-radius: 10px; margin-bottom: 15px; border-left: 4px solid #17a2b8;">
+                            <p style="margin-bottom: 10px;"><strong style="color: #0c5460;">문제 2: 위치 드리프트 (Localization Drift)</strong></p>
+                            <p style="margin-bottom: 8px; line-height: 1.7;">• <strong>증상:</strong> 미로의 반복 구조에서 로봇이 자신의 위치를 혼동 (맵 상 위치 점프)</p>
+                            <p style="margin-bottom: 8px; line-height: 1.7;">• <strong>원인:</strong> 유사한 벽면 패턴으로 인해 Scan Matching이 잘못된 위치에 매칭</p>
+                            <p style="margin-bottom: 8px; line-height: 1.7;">• <strong>해결:</strong>
+                                <br>&nbsp;&nbsp;&nbsp;① 출발 지점으로 돌아오는 경로 설계 → Loop Closure 강제 발생
+                                <br>&nbsp;&nbsp;&nbsp;② <code>optimize_every_n_nodes</code> 90으로 설정하여 주기적 Pose Graph 최적화
+                                <br>&nbsp;&nbsp;&nbsp;③ IMU 데이터 가중치 증가로 회전 각도 신뢰도 향상
+                            </p>
+                            <p style="line-height: 1.7;"><strong>✓ 결과:</strong> 위치 드리프트 평균 0.8m → 0.15m로 감소 (81% 개선)</p>
+                        </div>
+                        <div style="background: #f8d7da; padding: 20px; border-radius: 10px; border-left: 4px solid #dc3545;">
+                            <p style="margin-bottom: 10px;"><strong style="color: #721c24;">문제 3: 좁은 통로에서의 충돌 위험</strong></p>
+                            <p style="margin-bottom: 8px; line-height: 1.7;">• <strong>증상:</strong> 60cm 폭 통로에서 Navigation2의 경로 계획 실패 또는 벽면 근접</p>
+                            <p style="margin-bottom: 8px; line-height: 1.7;">• <strong>원인:</strong> 맵 해상도(0.05m/pixel) 대비 로봇 footprint 설정 부정확</p>
+                            <p style="margin-bottom: 8px; line-height: 1.7;">• <strong>해결:</strong>
+                                <br>&nbsp;&nbsp;&nbsp;① 로봇 footprint를 실제 크기(178mm) + 안전 마진 20mm로 재설정
+                                <br>&nbsp;&nbsp;&nbsp;② DWB Local Planner의 <code>inflation_radius</code> 0.25m로 확대
+                                <br>&nbsp;&nbsp;&nbsp;③ SLAM 맵핑 시 좁은 구간을 저속(0.05m/s)으로 통과하여 고해상도 스캔 확보
+                            </p>
+                            <p style="line-height: 1.7;"><strong>✓ 결과:</strong> 좁은 통로 통과 성공률 60% → 100% 달성</p>
+                        </div>
+                    </div>
+
+                    <!-- Mapping Strategy -->
+                    <div class="project-section">
+                        <h4 style="font-size: 1.25em;">🗺️ 전략적 맵핑 프로세스</h4>
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                            <p style="margin-bottom: 15px; line-height: 1.8;"><strong>SLAM 성능은 단순히 알고리즘만으로 결정되지 않는다.</strong> 환경 이해 기반의 주행 전략이 핵심이다.</p>
+                            <ol style="padding-left: 25px; line-height: 2;">
+                                <li><strong>환경 구조 분석:</strong> 코스 사전 답사를 통해 벽면, 코너, 반복 구조, 좁은 통로 위치 파악</li>
+                                <li><strong>최적 동선 설계:</strong> 벽면을 따라 주행하되 급회전 최소화, Loop Closure 유도를 위한 출발점 복귀 경로 포함</li>
+                                <li><strong>속도 전략 수립:</strong>
+                                    <ul style="margin-top: 8px; padding-left: 25px;">
+                                        <li>직선 구간: 0.22m/s (기본 속도)</li>
+                                        <li>코너 진입: 0.05m/s (맵 왜곡 방지)</li>
+                                        <li>반복 구조: 일정한 속도 유지 (Scan Matching 일관성 확보)</li>
+                                    </ul>
+                                </li>
+                                <li><strong>실시간 모니터링:</strong> RViz에서 맵 생성 과정을 실시간 확인하며 왜곡 발생 시 즉시 해당 구간 재주행</li>
+                                <li><strong>맵 검증 및 저장:</strong> 최종 맵의 벽면 직선성, 코너 정확도, Loop Closure 성공 여부 확인 후 <code>map_saver</code>로 저장</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <!-- Tech Stack -->
+                    <div class="project-section">
+                        <h4 style="font-size: 1.25em;">🛠️ 기술 스택</h4>
+                        <div class="tech-stack">
+                            <span class="tech-badge">ROS 2 Humble</span>
+                            <span class="tech-badge">Cartographer</span>
+                            <span class="tech-badge">Navigation2</span>
+                            <span class="tech-badge">LiDAR LDS-01</span>
+                            <span class="tech-badge">TurtleBot3 Burger</span>
+                            <span class="tech-badge">Python 3</span>
+                            <span class="tech-badge">C++</span>
+                            <span class="tech-badge">RViz2</span>
+                            <span class="tech-badge">Ubuntu 22.04</span>
+                            <span class="tech-badge">Raspberry Pi 3</span>
+                        </div>
+                    </div>
+
+                    <!-- Key Achievements -->
+                    <div class="project-section">
+                        <h4 style="font-size: 1.25em;">🎯 핵심 성과</h4>
+                        <div class="achievements">
+                            <ul>
+                                <li><strong>대회 완주 성공 및 우수상 수상</strong> (제3회 국제대학생 EV 자율주행 경진대회)</li>
+                                <li><strong>SLAM 맵핑 정확도 95% 이상</strong> 달성 – 벽면 직선성, 코너 정확도, Loop Closure 성공률 기준</li>
+                                <li><strong>위치 드리프트 81% 감소</strong> – 파라미터 튜닝 및 Loop Closure 전략으로 0.8m → 0.15m 개선</li>
+                                <li><strong>좁은 통로 통과율 100%</strong> – Footprint 최적화 및 전략적 맵핑으로 60cm 폭 통로 안정 주행</li>
+                                <li><strong>완전 자율주행 파이프라인 구축</strong> – Mapping → Localization → Planning → Control 전체 시스템 통합 및 검증</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Reference & Documentation -->
+                    <div class="project-section">
+                        <h4 style="font-size: 1.25em;">📚 참고 자료 및 레퍼런스</h4>
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                            <ul style="line-height: 2;">
+                                <li>🔗 <a href="https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/" target="_blank" style="color: #667eea; font-weight: 600;">ROBOTIS e-Manual: TurtleBot3</a></li>
+                                <li>🔗 <a href="https://github.com/ROBOTIS-GIT/turtlebot3" target="_blank" style="color: #667eea; font-weight: 600;">TurtleBot3 GitHub Repository</a></li>
+                                <li>🔗 <a href="https://google-cartographer-ros.readthedocs.io/" target="_blank" style="color: #667eea; font-weight: 600;">Cartographer ROS Documentation</a></li>
+                                <li>🔗 <a href="https://navigation.ros.org/" target="_blank" style="color: #667eea; font-weight: 600;">Navigation2 Official Documentation</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Key Insights -->
+                    <div style="background: #e7f3ff; padding: 20px; border-radius: 10px; border-left: 4px solid #667eea; margin-top: 20px;">
+                        <h4 style="color: #667eea; margin-bottom: 12px; font-size: 1.15em;">💡 프로젝트를 통해 얻은 핵심 인사이트</h4>
+                        <ul style="line-height: 1.9; color: #495057;">
+                            <li><strong>SLAM은 자율주행 전체의 기반이다:</strong> 맵 품질 저하 → Planning 실패 → 제어 불안정의 연쇄 구조를 직접 경험하며, 인지 시스템의 중요성 체득</li>
+                            <li><strong>알고리즘 + 환경 이해 + 주행 전략의 결합:</strong> Cartographer 파라미터만으로는 한계가 있으며, 환경 분석 기반의 전략적 맵핑이 실전 성능을 결정</li>
+                            <li><strong>센서 데이터 신뢰성의 중요성:</strong> LiDAR 스캔 품질이 곧 SLAM 품질이며, 속도 제어가 센서 안정성에 직접 영향을 미침</li>
+                            <li><strong>파라미터 튜닝은 "감각"이 아니라 "분석":</strong> 문제 현상 → 원인 분석 → 가설 수립 → 파라미터 조정 → 검증의 체계적 프로세스 필요</li>
+                            <li><strong>시스템 통합의 어려움:</strong> 개별 모듈(SLAM, Navigation, Control)이 완벽해도 연동 시 예상치 못한 문제 발생 → 전체 시스템 관점의 디버깅 능력 필수</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Project 2: PyTorch Linear Regression -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div>
+                            <h3 class="project-title">📊 PyTorch 기반 선형 회귀 및 경사하강법 구현</h3>
+                        </div>
+                    </div>
+                    <p class="project-meta">개인 프로젝트 | <a href="https://github.com/jakebeep00/PyTorch-Based-Linear-Regression-Implementation-with-Gradient-Descent" target="_blank" style="color: #667eea;">GitHub Repository</a></p>
+
+                    <div class="project-section">
+                        <h4>💼 프로젝트 개요</h4>
+                        <ul>
+                            <li><strong>고수준 API 없이 딥러닝 핵심 원리 구현:</strong> nn.Linear를 사용하지 않고 손실 함수, 역전파, 경사하강법 직접 구현</li>
+                            <li><strong>데이터 정규화 적용:</strong> 키-몸무게 데이터셋에 정규화를 통해 학습 안정성 및 수렴 속도 향상</li>
+                            <li><strong>학습 과정 시각화:</strong> Matplotlib을 활용하여 학습된 회귀선과 실제 데이터 비교 분석</li>
+                            <li><strong>하이퍼파라미터 튜닝:</strong> 1000 Epoch, Learning Rate 0.01 최적화</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <h4>🛠️ 기술 스택</h4>
+                        <div class="tech-stack">
+                            <span class="tech-badge">PyTorch</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Matplotlib</span>
+                            <span class="tech-badge">Gradient Descent</span>
+                            <span class="tech-badge">Data Normalization</span>
+                        </div>
+                    </div>
+
+                    <div class="project-section">
+                        <h4>🎯 핵심 성과</h4>
+                        <div class="achievements">
+                            <ul>
+                                <li><strong>역전파 및 경사하강법 원리 완전 이해:</strong> backward(), zero_grad() 등 PyTorch 핵심 메커니즘 학습</li>
+                                <li><strong>정규화를 통한 학습 안정성 검증:</strong> 정규화 전후 비교를 통해 데이터 전처리의 중요성 체득</li>
+                                <li><strong>MSE 손실 함수 최소화 성공:</strong> 1000 Epoch 학습으로 최적의 선형 모델 파라미터 도출</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <section id="experience">
+                <h2>💼 WORK EXPERIENCE</h2>
+                <div class="work-card">
+                    <h3>Launching Project Manager Intern</h3>
+                    <p class="company">Valeo Mobility Korea | 2024.08 - 2024.12 (5개월)</p>
+                    <ul>
+                        <li><strong>문서 자동화 도구 개발:</strong> Excel + 스크립트로 분석 시간 66% 절감</li>
+                        <li><strong>생산 품질 관리:</strong> DCR 샘플 관리, AOI 검사 결과 문서화</li>
+                        <li><strong>재도장 일정 관리:</strong> 다수 공장 일정 추적 및 팀 효율성 향상</li>
+                        <li><strong>결함 분석:</strong> 주간 요약 보고서 작성 및 개선 제안</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="education">
+                <h2>🎓 EDUCATION</h2>
+                <div class="education-card">
+                    <h3>영남대학교 - 로봇공학과</h3>
+                    <p>2019.03 - 2025.02 | 학사 졸업</p>
+                    <p><strong>주요 과목:</strong> 자율주행 시스템, 로봇 기구학 및 동역학, 임베디드 시스템, 제어공학, 기계설계</p>
+                </div>
+            </section>
+
+            <section id="certifications">
+                <h2>📜 CERTIFICATIONS</h2>
+                <div class="cert-card">
+                    <h3>OPIc IH (영어 중상급)</h3>
+                    <p>취득일: 2025.09</p>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>© 2025 Jaegeun Kim. All rights reserved.</p>
+            <p>
+                📧 <a href="mailto:jaegeunkim.work@gmail.com">jaegeunkim.work@gmail.com</a> |
+                📱 010-4627-2791 |
+                💻 <a href="https://github.com/jakebeep00">GitHub</a> |
+                💼 <a href="https://www.linkedin.com/in/jaegeun-kim-068551364">LinkedIn</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
